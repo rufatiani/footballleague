@@ -12,7 +12,7 @@ class DetailLeagueActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val league: League = intent.getParcelableExtra("league")
+        val league: League = intent.getParcelableExtra(Const.PARCEL_LEAGUE)
         setLayout(league)
     }
 

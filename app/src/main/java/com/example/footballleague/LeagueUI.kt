@@ -29,7 +29,7 @@ class LeagueUI : AnkoComponent<ViewGroup>{
             }
 
             textView {
-                id = Companion.tvName
+                id = tvName
                 textSize = 16f
             }.lparams {
                 margin = dip(10)

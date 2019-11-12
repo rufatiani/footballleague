@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             recyclerView {
                 layoutManager = LinearLayoutManager(context)
                 adapter = LeagueAdapter(context, leagues) {
-                    startActivity<DetailLeagueActivity>( "league" to it)
+                    startActivity<DetailLeagueActivity>( Const.PARCEL_LEAGUE to it)
                 }
             }
         }
