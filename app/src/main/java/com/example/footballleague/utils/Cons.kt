@@ -1,4 +1,4 @@
-package com.example.footballleague
+package com.example.footballleague.utils
 
 class Const {
     companion object {

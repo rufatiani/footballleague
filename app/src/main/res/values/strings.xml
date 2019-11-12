@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FootballLeague</string>
+    <string name="app_name">Football League</string>
 
     <string-array name="league_logo">
         <item>@drawable/english_premier_league</item>
