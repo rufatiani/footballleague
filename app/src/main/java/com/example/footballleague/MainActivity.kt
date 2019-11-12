@@ -7,6 +7,7 @@ import org.jetbrains.anko.recyclerview.v7.recyclerView
 import org.jetbrains.anko.matchParent
 import org.jetbrains.anko.verticalLayout
 import org.jetbrains.anko.wrapContent
+import org.jetbrains.anko.startActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class MainActivity : AppCompatActivity() {
             recyclerView {
                 layoutManager = LinearLayoutManager(context)
                 adapter = LeagueAdapter(context, leagues) {
-                    //startActivity<SecondActivity>("clubBundle" to it)
+                    startActivity<DetailLeagueActivity>( "league" to it)
                 }
             }
         }

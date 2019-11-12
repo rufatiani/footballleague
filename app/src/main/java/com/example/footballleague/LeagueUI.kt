@@ -35,8 +35,6 @@ class LeagueUI : AnkoComponent<ViewGroup>{
                 margin = dip(10)
                 gravity = Gravity.CENTER
             }
-
-
         }
     }
 
