@@ -1,6 +1,7 @@
 package com.example.footballleague.api
 
 import com.example.footballleague.model.Event
+import com.example.footballleague.model.Events
 import com.example.footballleague.model.League
 import com.example.footballleague.model.Leagues
 import kotlinx.coroutines.Deferred
@@ -17,6 +18,9 @@ interface ApiInterface {
     fun getDetailEvent(@Path(ApiConfiguration.QUERY_ID) idEvent: String): Deferred<Event>
 
     @GET(ApiConfiguration.PATH_NEXT_MATCH)
-    fun getNextEvent(@Path(ApiConfiguration.QUERY_ID) idLeague: String): Deferred<List<Event>>
+    fun getNextEvent(@Path(ApiConfiguration.QUERY_ID) idLeague: String): Deferred<List<Events>>
+
+    @GET(ApiConfiguration.PATH_SEARCH_EVENT)
+    fun getListEvent(@Query(ApiConfiguration.QUERY_SEARCH) query: String): Deferred<Events>
 
 }

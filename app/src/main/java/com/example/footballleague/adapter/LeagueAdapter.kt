@@ -1,6 +1,5 @@
 package com.example.footballleague.adapter
 
-import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.footballleague.R
 import com.example.footballleague.model.League
 import com.example.footballleague.utils.Const
-import com.example.footballleague.view.DetailLeagueActivity
+import com.example.footballleague.view.activity.DetailLeagueActivity
 import kotlinx.android.synthetic.main.item_league.view.*
 import kotlin.properties.Delegates
 

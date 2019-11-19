@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">Football League</string>
 
+    <string name="title_league">Leagues</string>
+    <string name="title_event">Events</string>
+
+    <string name="var_league">League</string>
+    <string name="var_event">Event</string>
+    <string name="var_date">Date</string>
+
     <string-array name="league_logo">
         <item>@drawable/english_premier_league</item>
         <item>@drawable/french_ligue_1</item>
@@ -87,4 +94,7 @@
             Sky Sports currently show live League One matches with highlights shown on BBC One on their programme called The Football League Show, which also broadcasts highlights of Football League Championship and Football League Two matches. The show is available on the red button the following Sunday until midday and is available on iPlayer all the following week. Highlights of all games in the Football League are also available to view separately on the Sky Sports website. In Sweden, TV4 Sport has the rights of broadcasting from the league. A couple of league matches during the season of 09/10 including play-off matches and the play-off final to the Championship were shown. In Australia, Setanta Sports Australia broadcasts live Championship matches. In the USA and surrounding countries including Cuba, some Football League Championship, Football League One and Football League Two games are shown on beIN Sport.
         </item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

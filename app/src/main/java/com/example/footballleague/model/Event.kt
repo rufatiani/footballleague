@@ -37,5 +37,7 @@ data class Event(
     val homeFormation: String,
 
     @SerializedName("strAwayFormation")
-    val awayFormation: String
+    val awayFormation: String,
+
+    var path: Int
 ) : Parcelable

@@ -2,8 +2,11 @@ package com.example.footballleague.di
 
 import com.example.footballleague.api.ApiConfiguration
 import com.example.footballleague.api.ApiInterface
+import com.example.footballleague.repository.EventRepository
+import com.example.footballleague.repository.EventRepositoryImpl
 import com.example.footballleague.repository.LeagueRepository
 import com.example.footballleague.repository.LeagueRepositoryImpl
+import com.example.footballleague.viewmodel.EventViewModel
 import com.example.footballleague.viewmodel.LeagueViewModel
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -27,6 +30,9 @@ val appModules = module {
 
     factory<LeagueRepository> { LeagueRepositoryImpl(apiInterface = get()) }
     viewModel { LeagueViewModel(leagueRepository = get()) }
+
+    factory<EventRepository> { EventRepositoryImpl(apiInterface = get()) }
+    viewModel { EventViewModel(eventRepository = get()) }
 }
 
 fun createHttpClient(): OkHttpClient {

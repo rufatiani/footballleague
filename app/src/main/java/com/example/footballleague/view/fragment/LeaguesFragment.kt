@@ -1,24 +1,28 @@
-package com.example.footballleague.view
+package com.example.footballleague.view.fragment
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+
 import com.example.footballleague.R
 import com.example.footballleague.adapter.LeagueAdapter
 import com.example.footballleague.model.League
-import com.example.footballleague.utils.Const
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_leagues.*
 
-class MainActivity : AppCompatActivity() {
+class LeaguesFragment : Fragment() {
 
     private var leagues: MutableList<League> = mutableListOf()
     private lateinit var leagueAdapter : LeagueAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_leagues, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         initData()
         setLayout()
     }
@@ -27,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         leagueAdapter = LeagueAdapter()
         leagueAdapter.updateData(leagues)
         rvLeagueList.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity)
+            layoutManager = LinearLayoutManager(this@LeaguesFragment.context)
             adapter = leagueAdapter
         }
     }
