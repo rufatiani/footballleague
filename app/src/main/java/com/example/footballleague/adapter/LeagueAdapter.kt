@@ -1,6 +1,7 @@
 package com.example.footballleague.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,18 +11,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.footballleague.R
 import com.example.footballleague.model.League
-import kotlinx.android.extensions.LayoutContainer
+import com.example.footballleague.utils.Const
+import com.example.footballleague.view.DetailLeagueActivity
 import kotlinx.android.synthetic.main.item_league.view.*
+import kotlin.properties.Delegates
 
-class LeagueAdapter(
-    private val context: Context,
-    private val leagues: List<League>,
-    private val listener: (League) -> Unit
-) : RecyclerView.Adapter<LeagueAdapter.ViewHolder>() {
+class LeagueAdapter : RecyclerView.Adapter<LeagueAdapter.ViewHolder>() {
+
+    private var leagues: List<League> by Delegates.observable(emptyList()) { _, _, _ ->
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemRow: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_league, parent, false)
+        val itemRow: View = LayoutInflater.from(parent.context).inflate(R.layout.item_league, parent, false)
         return ViewHolder(itemRow)
     }
 
@@ -29,19 +31,29 @@ class LeagueAdapter(
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bindItem(leagues[position], listener)
+        if(position != RecyclerView.NO_POSITION) {
+            holder.bindItem(leagues[position])
+        }
     }
 
-    class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
-        LayoutContainer {
+    fun updateData(newList: List<League>) {
+        leagues = newList
+    }
+
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         var tvName: TextView = itemView.tvItemName
         var ivLogo: ImageView = itemView.ivItemLogo
 
-        fun bindItem(items: League, listener: (League) -> Unit) {
-            tvName.text = items.name
-            Glide.with(containerView).load(items.path).into(ivLogo)
-            containerView.setOnClickListener { listener(items) }
+        fun bindItem(item: League) {
+            tvName.text = item.name
+            Glide.with(itemView.context).load(item.path).into(ivLogo)
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailLeagueActivity::class.java)
+                intent.putExtra(Const.PARCEL_LEAGUE, item)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 
