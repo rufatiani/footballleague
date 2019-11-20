@@ -3,15 +3,15 @@
     <item
         android:id="@+id/navigation_detail"
         android:icon="@drawable/ic_details_white_24dp"
-        android:title="@string/var_item_detail"/>
+        android:title="@string/var_item_detail" />
 
     <item
         android:id="@+id/navigation_prev"
         android:icon="@drawable/ic_navigate_before_white_24dp"
-        android:title="@string/var_item_prev"/>
+        android:title="@string/var_item_prev" />
 
     <item
         android:id="@+id/navigation_next"
         android:icon="@drawable/ic_navigate_next_white_24dp"
-        android:title="@string/var_item_next"/>
+        android:title="@string/var_item_next" />
 </menu>

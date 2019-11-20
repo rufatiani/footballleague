@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class DetailEventActivity : AppCompatActivity() {
-    private lateinit var event : Event
+    private lateinit var event: Event
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +30,7 @@ class DetailEventActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun setLayout(){
+    private fun setLayout() {
         tvDetailNameEvent.text = event.nameEvent
         tvDetailLeagueEvent.text = event.nameLeague
         tvDetailDateEvent.text = event.date + " " + event.time
@@ -41,24 +41,24 @@ class DetailEventActivity : AppCompatActivity() {
         tvDetailTeamHomeEvent.text = event.homeTeam
         tvDetailTeamAwayEvent.text = event.awayTeam
 
-        if (event.homeFormation == null){
+        if (event.homeFormation == null) {
             tvDetailFormationHomeEvent.text = "-"
-        }else{
+        } else {
             tvDetailFormationHomeEvent.text = event.homeFormation
         }
 
-        if (event.awayFormation == null){
+        if (event.awayFormation == null) {
             tvDetailFormationAwayEvent.text = "-"
-        }else{
+        } else {
             tvDetailFormationAwayEvent.text = event.homeFormation
         }
 
         tvDetailScoreHomeEvent.text = event.homeScore.toString()
         tvDetailScoreAwayEvent.text = event.awayScore.toString()
 
-        if (event.imageUrl == null){
+        if (event.imageUrl == null) {
             Glide.with(this).load(R.drawable.ic_broken_image_primary_24dp).into(ivDetailEvent)
-        }else{
+        } else {
             Glide.with(this).load(this.event.imageUrl).into(ivDetailEvent)
         }
     }

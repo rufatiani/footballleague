@@ -42,7 +42,8 @@ fun createHttpClient(): OkHttpClient {
         val originalRequest = it.request()
         val requestBuilder = originalRequest.newBuilder()
         requestBuilder.header("Content-Type", "application/json")
-        val request = requestBuilder.method(originalRequest.method(), originalRequest.body()).build()
+        val request =
+            requestBuilder.method(originalRequest.method(), originalRequest.body()).build()
         return@addInterceptor it.proceed(request)
     }.build()
 }

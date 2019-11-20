@@ -3,13 +3,12 @@ package com.example.footballleague.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.footballleague.model.Event
-import com.example.footballleague.model.Events
 import com.example.footballleague.repository.EventRepository
 import com.example.footballleague.utils.Result
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class EventViewModel (private val eventRepository: EventRepository) : ViewModel(),
+class EventViewModel(private val eventRepository: EventRepository) : ViewModel(),
     CoroutineScope {
 
     private val job = Job()
@@ -21,7 +20,7 @@ class EventViewModel (private val eventRepository: EventRepository) : ViewModel(
     val prevEvents = MutableLiveData<List<Event>>()
     val nextEvents = MutableLiveData<List<Event>>()
 
-    fun loadEvents(query: String){
+    fun loadEvents(query: String) {
         loading.value = true
         launch {
             val result = withContext(Dispatchers.IO) { eventRepository.getEvents(query) }
@@ -33,7 +32,7 @@ class EventViewModel (private val eventRepository: EventRepository) : ViewModel(
         }
     }
 
-    fun loadPrevEvents(query: String){
+    fun loadPrevEvents(query: String) {
         loading.value = true
         launch {
             val result = withContext(Dispatchers.IO) { eventRepository.getPrevEvents(query) }
@@ -45,7 +44,7 @@ class EventViewModel (private val eventRepository: EventRepository) : ViewModel(
         }
     }
 
-    fun loadNextEvents(query: String){
+    fun loadNextEvents(query: String) {
         loading.value = true
         launch {
             val result = withContext(Dispatchers.IO) { eventRepository.getNextEvents(query) }

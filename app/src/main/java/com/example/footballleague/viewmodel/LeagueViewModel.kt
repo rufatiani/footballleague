@@ -5,12 +5,11 @@ import androidx.lifecycle.ViewModel
 import com.example.footballleague.model.League
 import com.example.footballleague.repository.LeagueRepository
 import com.example.footballleague.utils.Result
-import io.reactivex.schedulers.Schedulers
 import kotlinx.coroutines.*
-import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
 
-class LeagueViewModel (private val leagueRepository: LeagueRepository) : ViewModel(), CoroutineScope{
+class LeagueViewModel(private val leagueRepository: LeagueRepository) : ViewModel(),
+    CoroutineScope {
 
     private val job = Job()
     override val coroutineContext: CoroutineContext = Dispatchers.Main + job
@@ -19,7 +18,7 @@ class LeagueViewModel (private val leagueRepository: LeagueRepository) : ViewMod
     val error = MutableLiveData<String>()
     val league = MutableLiveData<League>()
 
-    fun loadLeagueDetail(idLeague: String){
+    fun loadLeagueDetail(idLeague: String) {
         loading.value = true
         launch {
             val result = withContext(Dispatchers.IO) { leagueRepository.getDetailLeague(idLeague) }

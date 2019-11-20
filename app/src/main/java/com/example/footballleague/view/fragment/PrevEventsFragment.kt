@@ -15,7 +15,7 @@ import com.example.footballleague.viewmodel.EventViewModel
 import kotlinx.android.synthetic.main.fragment_events.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class PrevEventsFragment(private val idLeague: String) : Fragment(){
+class PrevEventsFragment(private val idLeague: String) : Fragment() {
     private var events: List<Event> = ArrayList()
     private lateinit var eventAdapter: EventAdapter
     private val eventViewModel: EventViewModel by viewModel()

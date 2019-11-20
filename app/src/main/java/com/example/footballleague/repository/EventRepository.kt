@@ -6,20 +6,20 @@ import com.example.footballleague.model.EventsJson
 import com.example.footballleague.utils.Result
 
 interface EventRepository {
-    suspend fun getEvents(query : String) : Result<Events>
+    suspend fun getEvents(query: String): Result<Events>
 
-    suspend fun getPrevEvents(query : String) : Result<EventsJson>
+    suspend fun getPrevEvents(query: String): Result<EventsJson>
 
-    suspend fun getNextEvents(query : String) : Result<EventsJson>
+    suspend fun getNextEvents(query: String): Result<EventsJson>
 }
 
-class EventRepositoryImpl (private val apiInterface: ApiInterface) : EventRepository{
+class EventRepositoryImpl(private val apiInterface: ApiInterface) : EventRepository {
 
     override suspend fun getEvents(query: String): Result<Events> {
         return try {
             val result = apiInterface.getListEvent(query).await()
             Result.Success(result)
-        }catch (e : Exception){
+        } catch (e: Exception) {
             Result.Error(e)
         }
     }
@@ -28,7 +28,7 @@ class EventRepositoryImpl (private val apiInterface: ApiInterface) : EventReposi
         return try {
             val result = apiInterface.getPrevEvent(query).await()
             Result.Success(result)
-        }catch (e : Exception){
+        } catch (e: Exception) {
             Result.Error(e)
         }
     }
@@ -37,7 +37,7 @@ class EventRepositoryImpl (private val apiInterface: ApiInterface) : EventReposi
         return try {
             val result = apiInterface.getNextEvent(query).await()
             Result.Success(result)
-        }catch (e : Exception){
+        } catch (e: Exception) {
             Result.Error(e)
         }
     }

@@ -7,4 +7,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Events(
     @SerializedName("event", alternate = ["events"])
-    val list: List<Event>) : Parcelable
+    val list: List<Event>
+) : Parcelable

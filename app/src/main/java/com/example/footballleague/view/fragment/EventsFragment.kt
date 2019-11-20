@@ -52,7 +52,8 @@ class EventsFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
 
-        val searchManager: SearchManager? = activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchManager: SearchManager? =
+            activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
         if (searchManager != null) {
             val searchView: SearchView = menu.findItem(R.id.search)?.actionView as SearchView
             if (!searchView.isIconified) {
@@ -86,7 +87,7 @@ class EventsFragment : Fragment() {
         }
     }
 
-    private fun initData(query : String) {
+    private fun initData(query: String) {
         eventViewModel.events.observe(this, Observer { events ->
             this.events = events
             setLayout()

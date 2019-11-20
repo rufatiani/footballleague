@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_league.*
 
 class LeagueActivity : AppCompatActivity() {
 
-    lateinit var league : League
+    lateinit var league: League
     private var prevMenuItem: MenuItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,8 @@ class LeagueActivity : AppCompatActivity() {
         setContentView(R.layout.activity_league)
         nav_view.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
-        val fragmentAdapter = PagerBottomNavigationAdapter(league, baseContext, supportFragmentManager)
+        val fragmentAdapter =
+            PagerBottomNavigationAdapter(league, baseContext, supportFragmentManager)
         vpLeague.adapter = fragmentAdapter
         vpLeague.offscreenPageLimit = 3
         vpLeague.currentItem = 0
@@ -57,21 +58,22 @@ class LeagueActivity : AppCompatActivity() {
         return true
     }
 
-    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.navigation_detail -> {
-                vpLeague.currentItem = 0
-                return@OnNavigationItemSelectedListener true
+    private val onNavigationItemSelectedListener =
+        BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.navigation_detail -> {
+                    vpLeague.currentItem = 0
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_prev -> {
+                    vpLeague.currentItem = 1
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_next -> {
+                    vpLeague.currentItem = 2
+                    return@OnNavigationItemSelectedListener true
+                }
             }
-            R.id.navigation_prev -> {
-                vpLeague.currentItem = 1
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_next -> {
-                vpLeague.currentItem = 2
-                return@OnNavigationItemSelectedListener true
-            }
+            false
         }
-        false
-    }
 }

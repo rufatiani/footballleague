@@ -2,12 +2,10 @@ package com.example.footballleague.view.activity
 
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.footballleague.R
 import com.example.footballleague.adapter.PagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-
 
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        vpMain.adapter = PagerAdapter(this,supportFragmentManager)
+        vpMain.adapter = PagerAdapter(this, supportFragmentManager)
         tlMain.setupWithViewPager(vpMain)
     }
 

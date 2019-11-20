@@ -40,7 +40,7 @@ class DetailLeagueFragment(val league: League) : Fragment() {
         activity?.let { Glide.with(it).load(this.league.path).into(ivDetailLogo) }
     }
 
-    private fun initViewModel(idLeague : String?) {
+    private fun initViewModel(idLeague: String?) {
         leagueViewModel.league.observe(this, Observer { league ->
             setLayout(league)
         })

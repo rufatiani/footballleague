@@ -22,7 +22,8 @@ class LeagueAdapter : RecyclerView.Adapter<LeagueAdapter.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemRow: View = LayoutInflater.from(parent.context).inflate(R.layout.item_league, parent, false)
+        val itemRow: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_league, parent, false)
         return ViewHolder(itemRow)
     }
 
@@ -30,7 +31,7 @@ class LeagueAdapter : RecyclerView.Adapter<LeagueAdapter.ViewHolder>() {
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if(position != RecyclerView.NO_POSITION) {
+        if (position != RecyclerView.NO_POSITION) {
             holder.bindItem(leagues[position])
         }
     }

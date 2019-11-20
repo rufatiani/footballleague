@@ -8,7 +8,8 @@ import com.example.footballleague.R
 import com.example.footballleague.view.fragment.EventsFragment
 import com.example.footballleague.view.fragment.LeaguesFragment
 
-class PagerAdapter(private val context: Context, fragmentManager: FragmentManager) : FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+class PagerAdapter(private val context: Context, fragmentManager: FragmentManager) :
+    FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private val fragments = listOf(
         LeaguesFragment(),

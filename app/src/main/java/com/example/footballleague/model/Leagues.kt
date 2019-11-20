@@ -7,4 +7,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Leagues(
     @SerializedName("leagues")
-    val list: List<League>) : Parcelable
+    val list: List<League>
+) : Parcelable

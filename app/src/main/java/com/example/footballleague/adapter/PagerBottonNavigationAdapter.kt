@@ -10,7 +10,11 @@ import com.example.footballleague.view.fragment.DetailLeagueFragment
 import com.example.footballleague.view.fragment.NextEventsFragment
 import com.example.footballleague.view.fragment.PrevEventsFragment
 
-class PagerBottomNavigationAdapter(val league: League, val context: Context, fragmentManager: FragmentManager) :
+class PagerBottomNavigationAdapter(
+    val league: League,
+    val context: Context,
+    fragmentManager: FragmentManager
+) :
     FragmentPagerAdapter(fragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     private val fragments = listOf(
