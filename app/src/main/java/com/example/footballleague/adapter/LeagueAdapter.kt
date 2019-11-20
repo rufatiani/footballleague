@@ -43,8 +43,8 @@ class LeagueAdapter : RecyclerView.Adapter<LeagueAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var tvName: TextView = itemView.tvItemName
-        var ivLogo: ImageView = itemView.ivItemLogo
+        private var tvName: TextView = itemView.tvItemName
+        private var ivLogo: ImageView = itemView.ivItemLogo
 
         fun bindItem(item: League) {
             tvName.text = item.name

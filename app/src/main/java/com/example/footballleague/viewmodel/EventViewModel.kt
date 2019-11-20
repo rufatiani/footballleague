@@ -26,7 +26,7 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
             val result = withContext(Dispatchers.IO) { eventRepository.getEvents(query) }
             loading.value = false
             when (result) {
-                is Result.Success -> events.value = result.data?.list
+                is Result.Success -> events.value = result.data?.list?.filter { it -> it.sport.equals("Soccer") }
                 is Result.Error -> error.value = result.exception.message
             }
         }

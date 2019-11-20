@@ -63,7 +63,7 @@ class EventsFragment : Fragment() {
             searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if (newText != null && newText.isEmpty()) {
-                        //initData(newText)
+                        initData(newText)
                     }
                     return true
                 }
@@ -89,8 +89,10 @@ class EventsFragment : Fragment() {
 
     private fun initData(query: String) {
         eventViewModel.events.observe(this, Observer { events ->
-            this.events = events
-            setLayout()
+            if(events != null){
+                this.events = events
+                setLayout()
+            }
         })
         eventViewModel.loading.observe(this, Observer { loading ->
             pbEventList.visibility = if (loading) View.VISIBLE else View.GONE

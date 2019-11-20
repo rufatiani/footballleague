@@ -41,9 +41,9 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        var tvNameEvent: TextView = itemView.tvItemNameEvent
-        var tvNameLeague: TextView = itemView.tvItemNameLeague
-        var tvDateEvent: TextView = itemView.tvItemDateEvent
+        private var tvNameEvent: TextView = itemView.tvItemNameEvent
+        private var tvNameLeague: TextView = itemView.tvItemNameLeague
+        private var tvDateEvent: TextView = itemView.tvItemDateEvent
 
         fun bindItem(item: Event) {
             tvNameEvent.text = item.nameEvent

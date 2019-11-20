@@ -12,6 +12,9 @@ data class Event(
     @SerializedName("strEvent")
     val nameEvent: String,
 
+    @SerializedName("strSport")
+    val sport: String,
+
     @SerializedName("idLeague")
     val idLeague: String,
 
