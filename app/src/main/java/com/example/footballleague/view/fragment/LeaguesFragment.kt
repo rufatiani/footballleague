@@ -3,6 +3,7 @@ package com.example.footballleague.view.fragment
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +18,11 @@ class LeaguesFragment : Fragment() {
     private var leagues: MutableList<League> = mutableListOf()
     private lateinit var leagueAdapter : LeagueAdapter
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_leagues, container, false)
     }
@@ -25,6 +31,15 @@ class LeaguesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initData()
         setLayout()
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+
+        val searchEvent = menu.findItem(R.id.search)
+        if (searchEvent != null) {
+            searchEvent.isVisible = false
+        }
     }
 
     private fun setLayout() {

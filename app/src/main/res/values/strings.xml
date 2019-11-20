@@ -8,6 +8,8 @@
     <string name="var_event">Event</string>
     <string name="var_date">Date</string>
 
+    <string name="var_item_search">Search</string>
+
     <string-array name="league_logo">
         <item>@drawable/english_premier_league</item>
         <item>@drawable/french_ligue_1</item>
