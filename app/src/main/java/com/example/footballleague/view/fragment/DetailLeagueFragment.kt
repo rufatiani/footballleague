@@ -10,8 +10,6 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.footballleague.R
 import com.example.footballleague.model.League
-import com.example.footballleague.utils.Const
-import com.example.footballleague.view.activity.DetailLeagueActivity
 import com.example.footballleague.viewmodel.LeagueViewModel
 import kotlinx.android.synthetic.main.fragment_detail_league.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -47,7 +45,7 @@ class DetailLeagueFragment(val league: League) : Fragment() {
             setLayout(league)
         })
         leagueViewModel.loading.observe(this, Observer { loading ->
-            pbLeagueDetail.visibility = if (loading) View.VISIBLE else View.GONE
+            pbEventDetail.visibility = if (loading) View.VISIBLE else View.GONE
         })
         leagueViewModel.error.observe(this, Observer { msgError ->
             Toast.makeText(activity, msgError, Toast.LENGTH_SHORT).show()

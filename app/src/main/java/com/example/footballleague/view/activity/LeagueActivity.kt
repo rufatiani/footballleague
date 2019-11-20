@@ -1,29 +1,17 @@
 package com.example.footballleague.view.activity
 
-import android.content.Context
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
-import com.bumptech.glide.Glide
 import com.example.footballleague.R
 import com.example.footballleague.adapter.PagerBottomNavigationAdapter
 import com.example.footballleague.model.League
 import com.example.footballleague.utils.Const
-import com.example.footballleague.view.fragment.DetailLeagueFragment
-import com.example.footballleague.viewmodel.LeagueViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_detail_league.*
-import org.koin.android.viewmodel.ext.android.viewModel
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import kotlinx.android.synthetic.main.activity_league.*
 
-class DetailLeagueActivity : AppCompatActivity() {
+class LeagueActivity : AppCompatActivity() {
 
     lateinit var league : League
     private var prevMenuItem: MenuItem? = null
@@ -33,7 +21,7 @@ class DetailLeagueActivity : AppCompatActivity() {
 
         league = intent.getParcelableExtra(Const.PARCEL_LEAGUE)
 
-        setContentView(R.layout.activity_detail_league)
+        setContentView(R.layout.activity_league)
         nav_view.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
         val fragmentAdapter = PagerBottomNavigationAdapter(league, baseContext, supportFragmentManager)
@@ -60,6 +48,13 @@ class DetailLeagueActivity : AppCompatActivity() {
             }
 
         })
+
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->

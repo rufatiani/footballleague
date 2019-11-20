@@ -27,6 +27,9 @@ data class Event(
     @SerializedName("dateEvent")
     val date: String,
 
+    @SerializedName("strTime")
+    val time: String,
+
     @SerializedName("intHomeScore")
     val homeScore: Int,
 
@@ -34,10 +37,11 @@ data class Event(
     val awayScore: Int,
 
     @SerializedName("strHomeFormation")
-    val homeFormation: String,
+    val homeFormation: String?,
 
     @SerializedName("strAwayFormation")
-    val awayFormation: String,
+    val awayFormation: String?,
 
-    var path: Int
+    @SerializedName("strThumb")
+    val imageUrl: String?
 ) : Parcelable

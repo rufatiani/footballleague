@@ -11,9 +11,6 @@ interface ApiInterface {
     @GET(ApiConfiguration.PATH_LEAGUE_DETAIL)
     fun getDetailLeague(@Query(ApiConfiguration.QUERY_ID) idLeague: String): Deferred<Leagues>
 
-    @GET(ApiConfiguration.PATH_EVENT_DETAIL)
-    fun getDetailEvent(@Query(ApiConfiguration.QUERY_ID) idEvent: String): Deferred<Event>
-
     @GET(ApiConfiguration.PATH_NEXT_MATCH)
     fun getNextEvent(@Query(ApiConfiguration.QUERY_ID) idLeague: String): Deferred<EventsJson>
 

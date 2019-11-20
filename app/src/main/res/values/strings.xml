@@ -6,7 +6,8 @@
 
     <string name="var_league">League</string>
     <string name="var_event">Event</string>
-    <string name="var_date">Date</string>
+    <string name="var_date">Date UTC</string>
+    <string name="var_time">Date Locale</string>
 
     <string name="var_item_search">Search</string>
     <string name="var_item_detail">Detail</string>

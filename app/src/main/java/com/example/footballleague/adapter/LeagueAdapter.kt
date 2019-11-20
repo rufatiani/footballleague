@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.footballleague.R
 import com.example.footballleague.model.League
 import com.example.footballleague.utils.Const
-import com.example.footballleague.view.activity.DetailLeagueActivity
+import com.example.footballleague.view.activity.LeagueActivity
 import kotlinx.android.synthetic.main.item_league.view.*
 import kotlin.properties.Delegates
 
@@ -49,7 +49,7 @@ class LeagueAdapter : RecyclerView.Adapter<LeagueAdapter.ViewHolder>() {
             tvName.text = item.name
             Glide.with(itemView.context).load(item.path).into(ivLogo)
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context, DetailLeagueActivity::class.java)
+                val intent = Intent(itemView.context, LeagueActivity::class.java)
                 intent.putExtra(Const.PARCEL_LEAGUE, item)
                 itemView.context.startActivity(intent)
             }

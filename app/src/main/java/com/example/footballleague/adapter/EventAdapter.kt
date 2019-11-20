@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.footballleague.R
 import com.example.footballleague.model.Event
 import com.example.footballleague.utils.Const
+import com.example.footballleague.view.activity.DetailEventActivity
 import kotlinx.android.synthetic.main.item_event.view.*
 import kotlin.properties.Delegates
 
@@ -50,9 +51,9 @@ class EventAdapter : RecyclerView.Adapter<EventAdapter.ViewHolder>() {
             tvNameLeague.text = item.nameLeague
             tvDateEvent.text = item.date
             itemView.setOnClickListener {
-                //val intent = Intent(itemView.context, DetailLeagueActivity::class.java)
-                //intent.putExtra(Const.PARCEL_LEAGUE, item)
-                //itemView.context.startActivity(intent)
+                val intent = Intent(itemView.context, DetailEventActivity::class.java)
+                intent.putExtra(Const.PARCEL_EVENT, item)
+                itemView.context.startActivity(intent)
             }
         }
     }
