@@ -18,6 +18,8 @@ class EventViewModel (private val eventRepository: EventRepository) : ViewModel(
     val loading = MutableLiveData<Boolean>()
     val error = MutableLiveData<String>()
     val events = MutableLiveData<List<Event>>()
+    val prevEvents = MutableLiveData<List<Event>>()
+    val nextEvents = MutableLiveData<List<Event>>()
 
     fun loadEvents(query: String){
         loading.value = true
@@ -26,6 +28,30 @@ class EventViewModel (private val eventRepository: EventRepository) : ViewModel(
             loading.value = false
             when (result) {
                 is Result.Success -> events.value = result.data?.list
+                is Result.Error -> error.value = result.exception.message
+            }
+        }
+    }
+
+    fun loadPrevEvents(query: String){
+        loading.value = true
+        launch {
+            val result = withContext(Dispatchers.IO) { eventRepository.getPrevEvents(query) }
+            loading.value = false
+            when (result) {
+                is Result.Success -> prevEvents.value = result.data?.list
+                is Result.Error -> error.value = result.exception.message
+            }
+        }
+    }
+
+    fun loadNextEvents(query: String){
+        loading.value = true
+        launch {
+            val result = withContext(Dispatchers.IO) { eventRepository.getNextEvents(query) }
+            loading.value = false
+            when (result) {
+                is Result.Success -> nextEvents.value = result.data?.list
                 is Result.Error -> error.value = result.exception.message
             }
         }

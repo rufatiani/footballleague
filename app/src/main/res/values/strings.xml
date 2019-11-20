@@ -9,6 +9,9 @@
     <string name="var_date">Date</string>
 
     <string name="var_item_search">Search</string>
+    <string name="var_item_detail">Detail</string>
+    <string name="var_item_next">Next Match</string>
+    <string name="var_item_prev">Previous Match</string>
 
     <string-array name="league_logo">
         <item>@drawable/english_premier_league</item>
