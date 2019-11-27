@@ -38,7 +38,7 @@ class DatabaseOpenHelper(context: Context) : ManagedSQLiteOpenHelper(context, "F
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.dropTable("FAVORITE_EVENTS", true)
+        db.dropTable(Const.TB_FAVORITE_EVENTS, true)
     }
 }
 
