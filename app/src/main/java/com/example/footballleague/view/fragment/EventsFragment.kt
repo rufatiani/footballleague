@@ -47,6 +47,11 @@ class EventsFragment : Fragment() {
         if (searchEvent != null) {
             searchEvent.isVisible = true
         }
+
+        val favoriteEvent = menu.findItem(R.id.favorite)
+        if (favoriteEvent != null) {
+            favoriteEvent.isVisible = false
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

@@ -51,6 +51,7 @@ class LeagueActivity : AppCompatActivity() {
         })
 
         actionBar?.setDisplayHomeAsUpEnabled(true)
+        actionBar?.setDisplayShowHomeEnabled(true)
     }
 
     override fun onSupportNavigateUp(): Boolean {

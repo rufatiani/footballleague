@@ -3,6 +3,7 @@
 
     <string name="title_league">Leagues</string>
     <string name="title_event">Events</string>
+    <string name="title_favorite">Favorites</string>
 
     <string name="var_league">League</string>
     <string name="var_event">Event</string>
@@ -13,6 +14,8 @@
     <string name="var_item_detail">Detail</string>
     <string name="var_item_next">Next Match</string>
     <string name="var_item_prev">Previous Match</string>
+
+    <string name="msg_favorite">Added to Favorite Events.</string>
 
     <string-array name="league_logo">
         <item>@drawable/english_premier_league</item>

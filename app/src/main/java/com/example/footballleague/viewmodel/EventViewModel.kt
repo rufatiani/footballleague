@@ -19,6 +19,10 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
     val events = MutableLiveData<List<Event>>()
     val prevEvents = MutableLiveData<List<Event>>()
     val nextEvents = MutableLiveData<List<Event>>()
+    val prevFavEvents = MutableLiveData<List<Event>>()
+    val nextFavEvents = MutableLiveData<List<Event>>()
+    val idSave = MutableLiveData<Long>()
+    val idDelete = MutableLiveData<Int>()
 
     fun loadEvents(query: String) {
         loading.value = true
@@ -51,6 +55,54 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
             loading.value = false
             when (result) {
                 is Result.Success -> nextEvents.value = result.data?.list
+                is Result.Error -> error.value = result.exception.message
+            }
+        }
+    }
+
+    fun loadPrevFavEvents() {
+        loading.value = true
+        launch {
+            val result = withContext(Dispatchers.IO) { eventRepository.getPrevFavoriteEvents() }
+            loading.value = false
+            when (result) {
+                is Result.Success -> prevFavEvents.value = result.data
+                is Result.Error -> error.value = result.exception.message
+            }
+        }
+    }
+
+    fun loadNextFavEvents() {
+        loading.value = true
+        launch {
+            val result = withContext(Dispatchers.IO) { eventRepository.getNextFavoriteEvents() }
+            loading.value = false
+            when (result) {
+                is Result.Success -> prevFavEvents.value = result.data
+                is Result.Error -> error.value = result.exception.message
+            }
+        }
+    }
+
+    fun saveFavEvent(event: Event) {
+        loading.value = true
+        launch {
+            val result = withContext(Dispatchers.IO) { eventRepository.saveFavoriteEvent(event) }
+            loading.value = false
+            when (result) {
+                is Result.Success -> idSave.value = result.data
+                is Result.Error -> error.value = result.exception.message
+            }
+        }
+    }
+
+    fun deleteFavEvent(idEvent: String) {
+        loading.value = true
+        launch {
+            val result = withContext(Dispatchers.IO) { eventRepository.deleteFavoriteEvent(idEvent) }
+            loading.value = false
+            when (result) {
+                is Result.Success -> idDelete.value = result.data
                 is Result.Error -> error.value = result.exception.message
             }
         }

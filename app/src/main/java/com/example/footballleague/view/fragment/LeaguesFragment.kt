@@ -43,6 +43,11 @@ class LeaguesFragment : Fragment() {
         if (searchEvent != null) {
             searchEvent.isVisible = false
         }
+
+        val favoriteEvent = menu.findItem(R.id.favorite)
+        if (favoriteEvent != null) {
+            favoriteEvent.isVisible = false
+        }
     }
 
     private fun setLayout() {
