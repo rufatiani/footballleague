@@ -9,17 +9,17 @@ data class Event(
     @SerializedName("idEvent")
     val idEvent: String,
 
-    @SerializedName("strEvent")
-    val nameEvent: String,
-
-    @SerializedName("strSport")
-    val sport: String,
-
     @SerializedName("idLeague")
     val idLeague: String,
 
+    @SerializedName("strEvent")
+    val nameEvent: String,
+
     @SerializedName("strLeague")
     val nameLeague: String,
+
+    @SerializedName("strSport")
+    val sport: String,
 
     @SerializedName("strHomeTeam")
     val homeTeam: String,

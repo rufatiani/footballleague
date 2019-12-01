@@ -1,6 +1,5 @@
 package com.example.footballleague.di
 
-import com.example.footballleague.DatabaseOpenHelper
 import com.example.footballleague.api.ApiConfiguration
 import com.example.footballleague.api.ApiInterface
 import com.example.footballleague.repository.EventRepository

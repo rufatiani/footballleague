@@ -1,10 +1,8 @@
 package com.example.footballleague.view.activity
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -14,7 +12,6 @@ import com.example.footballleague.model.Event
 import com.example.footballleague.utils.Const
 import com.example.footballleague.viewmodel.EventViewModel
 import kotlinx.android.synthetic.main.activity_detail_event.*
-import kotlinx.android.synthetic.main.fragment_events.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -42,10 +39,11 @@ class DetailEventActivity : AppCompatActivity() {
     private fun setLayout() {
         tvDetailNameEvent.text = event.nameEvent
         tvDetailLeagueEvent.text = event.nameLeague
-        tvDetailDateEvent.text = String.format("%s %s",event.date, event.time)
+        tvDetailDateEvent.text = String.format("%s %s", event.date, event.time)
 
         val sdf = SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.getDefault())
-        tvDetailTimeEvent.text = sdf.format(sdf.parse(String.format("%s %s",event.date, event.time)))
+        tvDetailTimeEvent.text =
+            sdf.format(sdf.parse(String.format("%s %s", event.date, event.time)))
 
         tvDetailTeamHomeEvent.text = event.homeTeam
         tvDetailTeamAwayEvent.text = event.awayTeam
@@ -93,19 +91,21 @@ class DetailEventActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
 
         if (item?.itemId == R.id.favorite) {
-            if (event != null) {
-                eventViewModel.saveFavEvent(event)
+            eventViewModel.saveFavEvent(event)
 
-                eventViewModel.idSave.observe(this, Observer { idSave ->
-                    if(idSave != null){
-                        Toast.makeText(baseContext, resources.getString(R.string.msg_favorite), Toast.LENGTH_SHORT).show()
-                    }
-                })
+            eventViewModel.idSave.observe(this, Observer { idSave ->
+                if (idSave != null) {
+                    Toast.makeText(
+                        baseContext,
+                        resources.getString(R.string.msg_favorite),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            })
 
-                eventViewModel.error.observe(this, Observer { msgError ->
-                    Toast.makeText(this, msgError, Toast.LENGTH_SHORT).show()
-                })
-            }
+            eventViewModel.error.observe(this, Observer { msgError ->
+                Toast.makeText(this, msgError, Toast.LENGTH_SHORT).show()
+            })
         }
 
         return super.onOptionsItemSelected(item)

@@ -13,7 +13,6 @@
         android:id="@+id/favorite"
         android:title="@string/var_item_search"
         android:icon="@drawable/ic_favorite_border_white_24dp"
-        app:showAsAction="ifRoom"
-        app:actionViewClass="android.widget.ImageView" />
+        app:showAsAction="ifRoom" />
 
 </menu>

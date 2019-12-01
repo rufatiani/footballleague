@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.footballleague.R
-import com.example.footballleague.view.fragment.EventsFragment
-import com.example.footballleague.view.fragment.NextEventsFragment
-import com.example.footballleague.view.fragment.PrevEventsFragment
+import com.example.footballleague.view.fragment.NextFavEventsFragment
 import com.example.footballleague.view.fragment.PrevFavEventsFragment
 
 class PagerAdapterFavorites(private val context: Context, fragmentManager: FragmentManager) :
@@ -15,7 +13,7 @@ class PagerAdapterFavorites(private val context: Context, fragmentManager: Fragm
 
     private val fragments = listOf(
         PrevFavEventsFragment(),
-        PrevFavEventsFragment()
+        NextFavEventsFragment()
     )
 
     override fun getItem(potition: Int): Fragment {

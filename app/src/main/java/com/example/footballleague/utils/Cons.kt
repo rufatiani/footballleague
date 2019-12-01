@@ -4,9 +4,11 @@ class Const {
     companion object {
         const val PARCEL_LEAGUE = "league"
         const val PARCEL_EVENT = "event"
+        const val PARCEL_ACTION = "action"
+        const val PARCEL_CLICK = "click"
+        const val PARCEL_DELETE = "delete"
 
         const val TB_FAVORITE_EVENTS: String = "FAVORITE_EVENTS"
-        const val COL_ID: String = "ID"
         const val COL_ID_EVENT: String = "ID_EVENT"
         const val COL_ID_LEAGUE: String = "ID_LEAGUE"
         const val COL_NAME_EVENT: String = "NAME_EVENT"

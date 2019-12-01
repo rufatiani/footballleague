@@ -1,5 +1,6 @@
 package com.example.footballleague.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.footballleague.R
 import com.example.footballleague.adapter.EventAdapter
 import com.example.footballleague.model.Event
+import com.example.footballleague.utils.Const
+import com.example.footballleague.view.activity.DetailEventActivity
 import com.example.footballleague.viewmodel.EventViewModel
 import kotlinx.android.synthetic.main.fragment_events.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -39,7 +42,11 @@ class NextEventsFragment(private val idLeague: String) : Fragment() {
     }
 
     private fun setLayout() {
-        eventAdapter = EventAdapter()
+        eventAdapter = EventAdapter { itemSelected: Event ->
+            val intent = Intent(context, DetailEventActivity::class.java)
+            intent.putExtra(Const.PARCEL_EVENT, itemSelected)
+            startActivity(intent)
+        }
         eventAdapter.updateData(events)
         rvEventList.apply {
             layoutManager = LinearLayoutManager(this@NextEventsFragment.context)

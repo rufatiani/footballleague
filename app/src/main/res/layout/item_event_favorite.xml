@@ -14,7 +14,7 @@
 
 
         <TextView
-            android:id="@+id/tvItemNameEvent"
+            android:id="@+id/tvItemNameEventFav"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
@@ -23,8 +23,8 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tvItemNameLeague"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemNameLeague" />
+            app:layout_constraintStart_toStartOf="@+id/tvItemNameLeagueFav"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemNameLeagueFav" />
 
         <TextView
             android:id="@+id/textView"
@@ -36,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvItemNameLeague"
+            android:id="@+id/tvItemNameLeagueFav"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -52,7 +52,7 @@
             android:text="@string/var_event"
             android:textColor="@color/colorPrimaryText"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemNameLeague" />
+            app:layout_constraintTop_toBottomOf="@+id/tvItemNameLeagueFav" />
 
         <TextView
             android:id="@+id/textView4"
@@ -62,7 +62,7 @@
             android:text="@string/var_date"
             android:textColor="@color/colorPrimaryText"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemNameEvent" />
+            app:layout_constraintTop_toBottomOf="@+id/tvItemNameEventFav" />
 
         <TextView
             android:id="@+id/tvItemDateEventFav"
@@ -70,8 +70,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textColor="@color/colorPrimaryText"
-            app:layout_constraintStart_toStartOf="@+id/tvItemNameEvent"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemNameEvent" />
+            app:layout_constraintStart_toStartOf="@+id/tvItemNameEventFav"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemNameEventFav" />
+
+        <ImageView
+            android:id="@+id/ivDeleteEventFav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

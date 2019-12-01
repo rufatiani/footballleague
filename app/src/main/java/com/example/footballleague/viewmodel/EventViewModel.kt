@@ -30,7 +30,8 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
             val result = withContext(Dispatchers.IO) { eventRepository.getEvents(query) }
             loading.value = false
             when (result) {
-                is Result.Success -> events.value = result.data?.list?.filter { it -> it.sport.equals("Soccer") }
+                is Result.Success -> events.value =
+                    result.data?.list?.filter { it -> it.sport.equals("Soccer") }
                 is Result.Error -> error.value = result.exception.message
             }
         }
@@ -78,7 +79,7 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
             val result = withContext(Dispatchers.IO) { eventRepository.getNextFavoriteEvents() }
             loading.value = false
             when (result) {
-                is Result.Success -> prevFavEvents.value = result.data
+                is Result.Success -> nextFavEvents.value = result.data
                 is Result.Error -> error.value = result.exception.message
             }
         }
@@ -86,25 +87,21 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
 
     fun saveFavEvent(event: Event) {
         loading.value = true
-        launch {
-            val result = withContext(Dispatchers.IO) { eventRepository.saveFavoriteEvent(event) }
-            loading.value = false
-            when (result) {
-                is Result.Success -> idSave.value = result.data
-                is Result.Error -> error.value = result.exception.message
-            }
+        val result = eventRepository.saveFavoriteEvent(event)
+        loading.value = false
+        when (result) {
+            is Result.Success -> idSave.value = result.data
+            is Result.Error -> error.value = result.exception.message
         }
     }
 
     fun deleteFavEvent(idEvent: String) {
         loading.value = true
-        launch {
-            val result = withContext(Dispatchers.IO) { eventRepository.deleteFavoriteEvent(idEvent) }
-            loading.value = false
-            when (result) {
-                is Result.Success -> idDelete.value = result.data
-                is Result.Error -> error.value = result.exception.message
-            }
+        val result = eventRepository.deleteFavoriteEvent(idEvent)
+        loading.value = false
+        when (result) {
+            is Result.Success -> idDelete.value = result.data
+            is Result.Error -> error.value = result.exception.message
         }
     }
 

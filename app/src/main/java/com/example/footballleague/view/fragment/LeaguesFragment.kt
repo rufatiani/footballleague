@@ -1,5 +1,6 @@
 package com.example.footballleague.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.footballleague.R
 import com.example.footballleague.adapter.LeagueAdapter
 import com.example.footballleague.model.League
+import com.example.footballleague.utils.Const
+import com.example.footballleague.view.activity.LeagueActivity
 import kotlinx.android.synthetic.main.fragment_leagues.*
 
 class LeaguesFragment : Fragment() {
@@ -51,7 +54,11 @@ class LeaguesFragment : Fragment() {
     }
 
     private fun setLayout() {
-        leagueAdapter = LeagueAdapter()
+        leagueAdapter = LeagueAdapter { itemSelected: League ->
+            val intent = Intent(context, LeagueActivity::class.java)
+            intent.putExtra(Const.PARCEL_LEAGUE, itemSelected)
+            startActivity(intent)
+        }
         leagueAdapter.updateData(leagues)
         rvLeagueList.apply {
             layoutManager = LinearLayoutManager(this@LeaguesFragment.context)
