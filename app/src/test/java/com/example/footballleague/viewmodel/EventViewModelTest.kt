@@ -1,14 +1,8 @@
 package com.example.footballleague.viewmodel
 
-import androidx.lifecycle.MutableLiveData
-import com.example.footballleague.api.ApiInterface
 import com.example.footballleague.model.Event
-import com.google.gson.Gson
-import kotlinx.coroutines.Deferred
-import org.junit.Test
-
-import org.junit.Assert.*
 import org.junit.Before
+import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
@@ -62,7 +56,8 @@ class EventViewModelTest {
     @Test
     fun saveFavEvent() {
         eventViewModel = mock(EventViewModel::class.java)
-        val event = Event("602268",
+        val event = Event(
+            "602268",
             "4328",
             "Burnley vs Crystal Palace",
             "English Premier League",
@@ -75,7 +70,8 @@ class EventViewModelTest {
             1,
             null,
             null,
-            null)
+            null
+        )
         eventViewModel.saveFavEvent(event)
         verify(eventViewModel).saveFavEvent(event)
     }

@@ -4,10 +4,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.junit.Test
-
-import org.junit.Assert.*
 import org.junit.Before
+import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
@@ -26,10 +24,11 @@ class LeagueRepositoryImplTest {
     @Test
     fun getDetailLeague() {
         leagueRepository = Mockito.mock(leagueRepository::class.java)
-        GlobalScope.launch{
+        GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 leagueRepository.getDetailLeague("4328")
-                Mockito.verify(leagueRepository.getDetailLeague("4328")) }
+                Mockito.verify(leagueRepository.getDetailLeague("4328"))
+            }
         }
     }
 }

@@ -5,10 +5,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.junit.Test
-
-import org.junit.Assert.*
 import org.junit.Before
+import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.verify
@@ -27,17 +25,18 @@ class EventRepositoryImplTest {
     @Test
     fun getEvents() {
         eventRepository = Mockito.mock(eventRepository::class.java)
-        GlobalScope.launch{
+        GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 eventRepository.getEvents("4328")
-                verify(eventRepository.getEvents("4328")) }
+                verify(eventRepository.getEvents("4328"))
+            }
         }
     }
 
     @Test
     fun getPrevEvents() {
         eventRepository = Mockito.mock(eventRepository::class.java)
-        GlobalScope.launch{
+        GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 eventRepository.getPrevEvents("4328")
                 verify(eventRepository.getPrevEvents("4328"))
@@ -48,7 +47,7 @@ class EventRepositoryImplTest {
     @Test
     fun getNextEvents() {
         eventRepository = Mockito.mock(eventRepository::class.java)
-        GlobalScope.launch{
+        GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 eventRepository.getNextEvents("4328")
                 verify(eventRepository.getNextEvents("4328"))
@@ -59,7 +58,8 @@ class EventRepositoryImplTest {
     @Test
     fun saveFavoriteEvent() {
         eventRepository = Mockito.mock(eventRepository::class.java)
-        val event = Event("602268",
+        val event = Event(
+            "602268",
             "4328",
             "Burnley vs Crystal Palace",
             "English Premier League",
@@ -72,8 +72,9 @@ class EventRepositoryImplTest {
             1,
             null,
             null,
-            null)
-        GlobalScope.launch{
+            null
+        )
+        GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 eventRepository.saveFavoriteEvent(event)
                 verify(eventRepository.saveFavoriteEvent(event))
@@ -84,7 +85,7 @@ class EventRepositoryImplTest {
     @Test
     fun deleteFavoriteEvent() {
         eventRepository = Mockito.mock(eventRepository::class.java)
-        GlobalScope.launch{
+        GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 eventRepository.deleteFavoriteEvent("4328")
                 verify(eventRepository.deleteFavoriteEvent("4328"))
@@ -95,7 +96,7 @@ class EventRepositoryImplTest {
     @Test
     fun getPrevFavoriteEvents() {
         eventRepository = Mockito.mock(eventRepository::class.java)
-        GlobalScope.launch{
+        GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 eventRepository.getPrevFavoriteEvents()
                 verify(eventRepository.getPrevFavoriteEvents())
@@ -106,7 +107,7 @@ class EventRepositoryImplTest {
     @Test
     fun getNextFavoriteEvents() {
         eventRepository = Mockito.mock(eventRepository::class.java)
-        GlobalScope.launch{
+        GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 eventRepository.getNextFavoriteEvents()
                 verify(eventRepository.getNextFavoriteEvents())
