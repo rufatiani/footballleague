@@ -23,11 +23,6 @@ class NextEventsFragment(private val idLeague: String) : Fragment() {
     private lateinit var eventAdapter: EventAdapter
     private val eventViewModel: EventViewModel by viewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +33,7 @@ class NextEventsFragment(private val idLeague: String) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        svEvents.visibility = View.GONE
         initData()
     }
 

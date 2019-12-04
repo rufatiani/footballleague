@@ -23,11 +23,6 @@ class NextFavEventsFragment : Fragment() {
     private lateinit var eventAdapter: EventFavoriteAdapter
     private val eventViewModel: EventViewModel by viewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,6 +33,7 @@ class NextFavEventsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        svEvents.visibility = View.GONE
         setLayout()
         initData()
     }

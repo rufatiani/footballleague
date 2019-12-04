@@ -25,11 +25,6 @@ class EventsFragment : Fragment() {
     private lateinit var eventAdapter: EventAdapter
     private val eventViewModel: EventViewModel by viewModel()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,50 +35,23 @@ class EventsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        initData("")
-    }
-
-    override fun onPrepareOptionsMenu(menu: Menu) {
-        super.onPrepareOptionsMenu(menu)
-
-        val searchEvent = menu.findItem(R.id.search)
-        if (searchEvent != null) {
-            searchEvent.isVisible = true
-        }
-
-        val favoriteEvent = menu.findItem(R.id.favorite)
-        if (favoriteEvent != null) {
-            favoriteEvent.isVisible = false
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-
-        val searchManager: SearchManager? =
-            activity?.getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        if (searchManager != null) {
-            val searchView: SearchView = menu.findItem(R.id.search)?.actionView as SearchView
-            if (!searchView.isIconified) {
-                searchView.isIconified = true
+        svEvents.visibility = View.VISIBLE
+        svEvents.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String?): Boolean {
+                if (newText != null && newText.isEmpty()) {
+                    initData(newText)
+                }
+                return true
             }
-            searchView.setSearchableInfo(searchManager.getSearchableInfo(activity?.componentName))
-            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                override fun onQueryTextChange(newText: String?): Boolean {
-                    if (newText != null && newText.isEmpty()) {
-                        initData(newText)
-                    }
-                    return true
-                }
 
-                override fun onQueryTextSubmit(query: String?): Boolean {
-                    if (query != null) {
-                        initData(query)
-                    }
-                    return true
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                if (query != null) {
+                    initData(query)
                 }
-            })
-        }
+                return true
+            }
+        })
+        initData("")
     }
 
     private fun setLayout() {
