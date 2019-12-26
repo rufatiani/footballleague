@@ -1,17 +1,24 @@
 package com.example.footballleague.viewmodel
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.MutableLiveData
 import com.example.footballleague.model.Event
+import org.junit.Assert
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.mockito.Mock
-import org.mockito.Mockito.mock
-import org.mockito.Mockito.verify
+import org.mockito.Mockito.*
 import org.mockito.MockitoAnnotations
+
 
 class EventViewModelTest {
 
     @Mock
     private lateinit var eventViewModel: EventViewModel
+
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Before
     fun setUp() {
@@ -20,9 +27,16 @@ class EventViewModelTest {
 
     @Test
     fun loadEvents() {
+        val actual = MutableLiveData<List<Event>>()
+        actual.postValue(listOf<Event>())
+
+        `when`(eventViewModel.events).thenReturn(actual)
+        eventViewModel.events.value?.equals(listOf<Event>())?.let { Assert.assertTrue(it) }
         eventViewModel = mock(EventViewModel::class.java)
         eventViewModel.loadEvents("")
         verify(eventViewModel).loadEvents("")
+
+
     }
 
     @Test
@@ -30,6 +44,12 @@ class EventViewModelTest {
         eventViewModel = mock(EventViewModel::class.java)
         eventViewModel.loadPrevEvents("")
         verify(eventViewModel).loadPrevEvents("")
+
+        val actual = MutableLiveData<List<Event>>()
+        actual.postValue(listOf<Event>())
+
+        `when`(eventViewModel.prevEvents).thenReturn(actual)
+        eventViewModel.prevEvents.value?.equals(listOf<Event>())?.let { Assert.assertTrue(it) }
     }
 
     @Test
@@ -37,6 +57,12 @@ class EventViewModelTest {
         eventViewModel = mock(EventViewModel::class.java)
         eventViewModel.loadNextEvents("")
         verify(eventViewModel).loadNextEvents("")
+
+        val actual = MutableLiveData<List<Event>>()
+        actual.postValue(listOf<Event>())
+
+        `when`(eventViewModel.nextEvents).thenReturn(actual)
+        eventViewModel.nextEvents.value?.equals(listOf<Event>())?.let { Assert.assertTrue(it) }
     }
 
     @Test
@@ -44,6 +70,12 @@ class EventViewModelTest {
         eventViewModel = mock(EventViewModel::class.java)
         eventViewModel.loadPrevFavEvents()
         verify(eventViewModel).loadPrevFavEvents()
+
+        val actual = MutableLiveData<List<Event>>()
+        actual.postValue(listOf<Event>())
+
+        `when`(eventViewModel.prevFavEvents).thenReturn(actual)
+        eventViewModel.prevFavEvents.value?.equals(listOf<Event>())?.let { Assert.assertTrue(it) }
     }
 
     @Test
@@ -51,6 +83,12 @@ class EventViewModelTest {
         eventViewModel = mock(EventViewModel::class.java)
         eventViewModel.loadNextFavEvents()
         verify(eventViewModel).loadNextFavEvents()
+
+        val actual = MutableLiveData<List<Event>>()
+        actual.postValue(listOf<Event>())
+
+        `when`(eventViewModel.nextFavEvents).thenReturn(actual)
+        eventViewModel.nextFavEvents.value?.equals(listOf<Event>())?.let { Assert.assertTrue(it) }
     }
 
     @Test
@@ -74,6 +112,12 @@ class EventViewModelTest {
         )
         eventViewModel.saveFavEvent(event)
         verify(eventViewModel).saveFavEvent(event)
+
+        val actual = MutableLiveData<Long>()
+        actual.value = 1
+
+        `when`(eventViewModel.idSave).thenReturn(actual)
+        Assert.assertEquals(1.toLong(), eventViewModel.idSave.value)
     }
 
     @Test
@@ -81,5 +125,11 @@ class EventViewModelTest {
         eventViewModel = mock(EventViewModel::class.java)
         eventViewModel.deleteFavEvent("602268")
         verify(eventViewModel).deleteFavEvent("602268")
+
+        val actual = MutableLiveData<Int>()
+        actual.value = 1
+
+        `when`(eventViewModel.idDelete).thenReturn(actual)
+        Assert.assertEquals(1, eventViewModel.idDelete.value)
     }
 }
