@@ -2,7 +2,16 @@ package com.example.footballleague.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import com.example.footballleague.model.Event
+import com.example.footballleague.model.Events
+import com.example.footballleague.model.EventsJson
+import com.example.footballleague.repository.EventRepository
+import com.example.footballleague.utils.Result
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -15,7 +24,18 @@ import org.mockito.MockitoAnnotations
 class EventViewModelTest {
 
     @Mock
+    private lateinit var repository: EventRepository
+
     private lateinit var eventViewModel: EventViewModel
+
+    @Mock
+    private lateinit var observer: Observer<List<Event>>
+
+    @Mock
+    private lateinit var observerSave: Observer<Long>
+
+    @Mock
+    private lateinit var observerDelete: Observer<Int>
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -23,77 +43,114 @@ class EventViewModelTest {
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
+        eventViewModel = EventViewModel(repository)
     }
 
     @Test
     fun loadEvents() {
-        val actual = MutableLiveData<List<Event>>()
-        actual.postValue(listOf<Event>())
-
-        `when`(eventViewModel.events).thenReturn(actual)
-        eventViewModel.events.value?.equals(listOf<Event>())?.let { Assert.assertTrue(it) }
         eventViewModel = mock(EventViewModel::class.java)
-        eventViewModel.loadEvents("")
-        verify(eventViewModel).loadEvents("")
 
+        val expected = listOf<Result<Events>>(
+            Result.Error(Throwable()),
+            Result.Success(Events(listOf<Event>()))
+        )
 
+        GlobalScope.launch {
+            withContext(Dispatchers.IO) {
+                `when`(repository.getEvents("")).thenReturn(expected[0])
+                eventViewModel.events.observeForever { observer }
+                eventViewModel.loadEvents("")
+
+                verify(observer).onChanged(listOf<Event>())
+            }
+        }
     }
 
     @Test
     fun loadPrevEvents() {
         eventViewModel = mock(EventViewModel::class.java)
-        eventViewModel.loadPrevEvents("")
-        verify(eventViewModel).loadPrevEvents("")
+        val expected = listOf<Result<EventsJson>>(
+            Result.Error(Throwable()),
+            Result.Success(EventsJson(listOf<Event>()))
+        )
 
-        val actual = MutableLiveData<List<Event>>()
-        actual.postValue(listOf<Event>())
+        GlobalScope.launch {
+            withContext(Dispatchers.IO) {
+                `when`(repository.getPrevEvents("")).thenReturn(expected[0])
+                eventViewModel.prevEvents.observeForever { observer }
+                eventViewModel.loadPrevEvents("")
 
-        `when`(eventViewModel.prevEvents).thenReturn(actual)
-        eventViewModel.prevEvents.value?.equals(listOf<Event>())?.let { Assert.assertTrue(it) }
+                verify(observer).onChanged(listOf<Event>())
+            }
+        }
     }
 
     @Test
     fun loadNextEvents() {
         eventViewModel = mock(EventViewModel::class.java)
-        eventViewModel.loadNextEvents("")
-        verify(eventViewModel).loadNextEvents("")
+        val expected = listOf<Result<EventsJson>>(
+            Result.Error(Throwable()),
+            Result.Success(EventsJson(listOf<Event>()))
+        )
 
-        val actual = MutableLiveData<List<Event>>()
-        actual.postValue(listOf<Event>())
+        GlobalScope.launch {
+            withContext(Dispatchers.IO) {
+                `when`(repository.getNextEvents("")).thenReturn(expected[0])
+                eventViewModel.nextEvents.observeForever { observer }
+                eventViewModel.loadNextEvents("")
 
-        `when`(eventViewModel.nextEvents).thenReturn(actual)
-        eventViewModel.nextEvents.value?.equals(listOf<Event>())?.let { Assert.assertTrue(it) }
+                verify(observer).onChanged(listOf<Event>())
+            }
+        }
     }
 
     @Test
     fun loadPrevFavEvents() {
         eventViewModel = mock(EventViewModel::class.java)
-        eventViewModel.loadPrevFavEvents()
-        verify(eventViewModel).loadPrevFavEvents()
+        val expected = listOf<Result<List<Event>>>(
+            Result.Error(Throwable()),
+            Result.Success(listOf<Event>())
+        )
 
-        val actual = MutableLiveData<List<Event>>()
-        actual.postValue(listOf<Event>())
+        GlobalScope.launch {
+            withContext(Dispatchers.IO) {
+                `when`(repository.getPrevFavoriteEvents()).thenReturn(expected[0])
+                eventViewModel.prevFavEvents.observeForever { observer }
+                eventViewModel.loadPrevFavEvents()
 
-        `when`(eventViewModel.prevFavEvents).thenReturn(actual)
-        eventViewModel.prevFavEvents.value?.equals(listOf<Event>())?.let { Assert.assertTrue(it) }
+                verify(observer).onChanged(listOf<Event>())
+            }
+        }
     }
 
     @Test
     fun loadNextFavEvents() {
         eventViewModel = mock(EventViewModel::class.java)
-        eventViewModel.loadNextFavEvents()
-        verify(eventViewModel).loadNextFavEvents()
+        val expected = listOf<Result<List<Event>>>(
+            Result.Error(Throwable()),
+            Result.Success(listOf<Event>())
+        )
 
-        val actual = MutableLiveData<List<Event>>()
-        actual.postValue(listOf<Event>())
+        GlobalScope.launch {
+            withContext(Dispatchers.IO) {
+                `when`(repository.getNextFavoriteEvents()).thenReturn(expected[0])
+                eventViewModel.nextFavEvents.observeForever { observer }
+                eventViewModel.loadNextFavEvents()
 
-        `when`(eventViewModel.nextFavEvents).thenReturn(actual)
-        eventViewModel.nextFavEvents.value?.equals(listOf<Event>())?.let { Assert.assertTrue(it) }
+                verify(observer).onChanged(listOf<Event>())
+            }
+        }
     }
 
     @Test
     fun saveFavEvent() {
         eventViewModel = mock(EventViewModel::class.java)
+
+        val expected = listOf<Result<Long>>(
+            Result.Error(Throwable()),
+            Result.Success(1)
+        )
+
         val event = Event(
             "602268",
             "4328",
@@ -110,14 +167,16 @@ class EventViewModelTest {
             null,
             null
         )
-        eventViewModel.saveFavEvent(event)
-        verify(eventViewModel).saveFavEvent(event)
 
-        val actual = MutableLiveData<Long>()
-        actual.value = 1
+        GlobalScope.launch {
+            withContext(Dispatchers.IO) {
+                `when`(repository.saveFavoriteEvent(event)).thenReturn(expected[0])
+                eventViewModel.idSave.observeForever { observerSave }
+                eventViewModel.saveFavEvent(event)
 
-        `when`(eventViewModel.idSave).thenReturn(actual)
-        Assert.assertEquals(1.toLong(), eventViewModel.idSave.value)
+                verify(observerSave).onChanged(1)
+            }
+        }
     }
 
     @Test
@@ -131,5 +190,20 @@ class EventViewModelTest {
 
         `when`(eventViewModel.idDelete).thenReturn(actual)
         Assert.assertEquals(1, eventViewModel.idDelete.value)
+
+        val expected = listOf<Result<Int>>(
+            Result.Error(Throwable()),
+            Result.Success(1)
+        )
+
+        GlobalScope.launch {
+            withContext(Dispatchers.IO) {
+                `when`(repository.deleteFavoriteEvent("602268")).thenReturn(expected[0])
+                eventViewModel.idDelete.observeForever { observerDelete }
+                eventViewModel.deleteFavEvent("602268")
+
+                verify(observerDelete).onChanged(1)
+            }
+        }
     }
 }
