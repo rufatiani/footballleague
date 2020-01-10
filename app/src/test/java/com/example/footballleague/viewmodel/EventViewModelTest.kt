@@ -1,7 +1,6 @@
 package com.example.footballleague.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.footballleague.model.Event
 import com.example.footballleague.model.Events
@@ -12,7 +11,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -184,12 +182,6 @@ class EventViewModelTest {
         eventViewModel = mock(EventViewModel::class.java)
         eventViewModel.deleteFavEvent("602268")
         verify(eventViewModel).deleteFavEvent("602268")
-
-        val actual = MutableLiveData<Int>()
-        actual.value = 1
-
-        `when`(eventViewModel.idDelete).thenReturn(actual)
-        Assert.assertEquals(1, eventViewModel.idDelete.value)
 
         val expected = listOf<Result<Int>>(
             Result.Error(Throwable()),
