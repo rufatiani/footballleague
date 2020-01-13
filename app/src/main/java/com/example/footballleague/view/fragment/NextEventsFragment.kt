@@ -51,9 +51,11 @@ class NextEventsFragment(private val idLeague: String) : Fragment() {
     }
 
     private fun initData() {
-        eventViewModel.nextEvents.observe(this, Observer { events ->
-            this.events = events
-            setLayout()
+        eventViewModel.nextEvents?.observe(this, Observer { events ->
+            if(events != null) {
+                this.events = events
+                setLayout()
+            }
         })
         eventViewModel.loading.observe(this, Observer { loading ->
             pbEventList.visibility = if (loading) View.VISIBLE else View.GONE

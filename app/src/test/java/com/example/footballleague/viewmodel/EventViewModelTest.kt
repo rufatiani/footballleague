@@ -75,7 +75,7 @@ class EventViewModelTest {
         GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 `when`(repository.getPrevEvents("")).thenReturn(expected[0])
-                eventViewModel.prevEvents.observeForever { observer }
+                eventViewModel.prevEvents?.observeForever { observer }
                 eventViewModel.loadPrevEvents("")
 
                 verify(observer).onChanged(listOf<Event>())
@@ -94,7 +94,7 @@ class EventViewModelTest {
         GlobalScope.launch {
             withContext(Dispatchers.IO) {
                 `when`(repository.getNextEvents("")).thenReturn(expected[0])
-                eventViewModel.nextEvents.observeForever { observer }
+                eventViewModel.nextEvents?.observeForever { observer }
                 eventViewModel.loadNextEvents("")
 
                 verify(observer).onChanged(listOf<Event>())

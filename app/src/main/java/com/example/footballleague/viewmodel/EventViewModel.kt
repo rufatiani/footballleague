@@ -17,8 +17,8 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
     val loading = MutableLiveData<Boolean>()
     val error = MutableLiveData<String>()
     val events = MutableLiveData<List<Event>>()
-    val prevEvents = MutableLiveData<List<Event>>()
-    val nextEvents = MutableLiveData<List<Event>>()
+    val prevEvents : MutableLiveData<List<Event>>? = MutableLiveData<List<Event>>()
+    val nextEvents  :MutableLiveData<List<Event>>? = MutableLiveData<List<Event>>()
     val prevFavEvents = MutableLiveData<List<Event>>()
     val nextFavEvents = MutableLiveData<List<Event>>()
     val idSave = MutableLiveData<Long>()
@@ -43,7 +43,7 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
             val result = withContext(Dispatchers.IO) { eventRepository.getPrevEvents(query) }
             loading.value = false
             when (result) {
-                is Result.Success -> prevEvents.value = result.data?.list
+                is Result.Success -> prevEvents?.value = result.data?.list
                 is Result.Error -> error.value = result.exception.message
             }
         }
@@ -55,7 +55,7 @@ class EventViewModel(private val eventRepository: EventRepository) : ViewModel()
             val result = withContext(Dispatchers.IO) { eventRepository.getNextEvents(query) }
             loading.value = false
             when (result) {
-                is Result.Success -> nextEvents.value = result.data?.list
+                is Result.Success -> nextEvents?.value = result.data?.list
                 is Result.Error -> error.value = result.exception.message
             }
         }
