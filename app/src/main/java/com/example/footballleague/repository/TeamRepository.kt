@@ -2,14 +2,12 @@ package com.example.footballleague.repository
 
 import android.content.Context
 import com.example.footballleague.api.ApiInterface
-import com.example.footballleague.database
+import com.example.footballleague.utils.database
 import com.example.footballleague.model.Team
 import com.example.footballleague.model.Teams
 import com.example.footballleague.utils.Const
 import com.example.footballleague.utils.Result
 import org.jetbrains.anko.db.*
-import java.text.SimpleDateFormat
-import java.util.*
 
 interface TeamRepository {
     suspend fun getTeams(idLeague : String) : Result<Teams>

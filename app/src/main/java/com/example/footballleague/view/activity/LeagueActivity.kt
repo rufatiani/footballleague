@@ -66,16 +66,20 @@ class LeagueActivity : AppCompatActivity() {
                     vpLeague.currentItem = 0
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_prev -> {
+                R.id.navigation_classemnet -> {
                     vpLeague.currentItem = 1
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_next -> {
+                R.id.navigation_team -> {
                     vpLeague.currentItem = 2
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_team -> {
+                R.id.navigation_prev -> {
                     vpLeague.currentItem = 3
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_next -> {
+                    vpLeague.currentItem = 4
                     return@OnNavigationItemSelectedListener true
                 }
             }

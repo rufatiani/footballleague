@@ -3,7 +3,7 @@ package com.example.footballleague.repository
 import android.annotation.SuppressLint
 import android.content.Context
 import com.example.footballleague.api.ApiInterface
-import com.example.footballleague.database
+import com.example.footballleague.utils.database
 import com.example.footballleague.model.Event
 import com.example.footballleague.model.Events
 import com.example.footballleague.model.EventsJson

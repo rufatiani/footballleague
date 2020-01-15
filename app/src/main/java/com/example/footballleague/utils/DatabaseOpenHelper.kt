@@ -1,8 +1,7 @@
-package com.example.footballleague
+package com.example.footballleague.utils
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
-import com.example.footballleague.utils.Const
 import org.jetbrains.anko.db.*
 
 class DatabaseOpenHelper(context: Context) :
@@ -13,7 +12,8 @@ class DatabaseOpenHelper(context: Context) :
         @Synchronized
         fun getInstance(context: Context): DatabaseOpenHelper {
             if (instance == null) {
-                instance = DatabaseOpenHelper(context.applicationContext)
+                instance =
+                    DatabaseOpenHelper(context.applicationContext)
             }
             return instance!!
         }
@@ -59,5 +59,7 @@ class DatabaseOpenHelper(context: Context) :
 }
 
 val Context.database: DatabaseOpenHelper
-    get() = DatabaseOpenHelper.getInstance(applicationContext)
+    get() = DatabaseOpenHelper.getInstance(
+        applicationContext
+    )
 

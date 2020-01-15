@@ -20,11 +20,18 @@
     <string name="var_item_next">Next Match</string>
     <string name="var_item_prev">Previous Match</string>
     <string name="var_item_team">Teams</string>
+    <string name="var_item_classement">Classement</string>
 
     <string name="var_msg_title">Delete Confirmation</string>
     <string name="var_msg">Are you sure want to delete this item?</string>
 
     <string name="msg_favorite">Added to Favorites.</string>
+
+    <string name="row_no">No</string>
+    <string name="row_team">Name Team</string>
+    <string name="row_win">Win</string>
+    <string name="row_loss">Loss</string>
+    <string name="row_draw">Draw</string>
 
     <string-array name="league_logo">
         <item>@drawable/english_premier_league</item>
