@@ -14,4 +14,9 @@
         android:id="@+id/navigation_next"
         android:icon="@drawable/ic_navigate_next_white_24dp"
         android:title="@string/var_item_next" />
+
+    <item
+        android:id="@+id/navigation_team"
+        android:icon="@drawable/ic_people_white_24dp"
+        android:title="@string/var_item_team" />
 </menu>

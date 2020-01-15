@@ -48,13 +48,13 @@ class DetailEventActivity : AppCompatActivity() {
         tvDetailTeamHomeEvent.text = event.homeTeam
         tvDetailTeamAwayEvent.text = event.awayTeam
 
-        if (event.homeFormation == null) {
+        if (event.homeFormation.isNullOrEmpty()) {
             tvDetailFormationHomeEvent.text = "-"
         } else {
             tvDetailFormationHomeEvent.text = event.homeFormation
         }
 
-        if (event.awayFormation == null) {
+        if (event.awayFormation.isNullOrEmpty()) {
             tvDetailFormationAwayEvent.text = "-"
         } else {
             tvDetailFormationAwayEvent.text = event.homeFormation

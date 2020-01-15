@@ -9,16 +9,22 @@
     <string name="var_event">Event</string>
     <string name="var_date">Date UTC</string>
     <string name="var_time">Date Locale</string>
+    <string name="var_team">Team</string>
+    <string name="var_country">Country</string>
+    <string name="var_website">Website</string>
+    <string name="var_youtube">Youtube</string>
+    <string name="var_description">Description</string>
 
     <string name="var_item_search">Search</string>
     <string name="var_item_detail">Detail</string>
     <string name="var_item_next">Next Match</string>
     <string name="var_item_prev">Previous Match</string>
+    <string name="var_item_team">Teams</string>
 
     <string name="var_msg_title">Delete Confirmation</string>
     <string name="var_msg">Are you sure want to delete this item?</string>
 
-    <string name="msg_favorite">Added to Favorite Events.</string>
+    <string name="msg_favorite">Added to Favorites.</string>
 
     <string-array name="league_logo">
         <item>@drawable/english_premier_league</item>

@@ -8,6 +8,7 @@ import com.example.footballleague.R
 import com.example.footballleague.view.fragment.EventsFragment
 import com.example.footballleague.view.fragment.FavoritesFragment
 import com.example.footballleague.view.fragment.LeaguesFragment
+import com.example.footballleague.view.fragment.TeamsSearchFragment
 
 class PagerBottomNavigationMainAdapter(
     val context: Context,
@@ -18,6 +19,7 @@ class PagerBottomNavigationMainAdapter(
     private val fragments = listOf(
         LeaguesFragment(),
         EventsFragment(),
+        TeamsSearchFragment(),
         FavoritesFragment()
     )
 
@@ -33,6 +35,7 @@ class PagerBottomNavigationMainAdapter(
         return when (position) {
             0 -> context.resources.getString(R.string.title_league)
             1 -> context.resources.getString(R.string.title_event)
+            2 -> context.resources.getString(R.string.var_item_team)
             else -> context.resources.getString(R.string.title_favorite)
         }
     }

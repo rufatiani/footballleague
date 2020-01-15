@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.footballleague.R
+import com.example.footballleague.view.fragment.FavTeamsFragment
 import com.example.footballleague.view.fragment.NextFavEventsFragment
 import com.example.footballleague.view.fragment.PrevFavEventsFragment
 
@@ -13,7 +14,8 @@ class PagerAdapterFavorites(private val context: Context, fragmentManager: Fragm
 
     private val fragments = listOf(
         PrevFavEventsFragment(),
-        NextFavEventsFragment()
+        NextFavEventsFragment(),
+        FavTeamsFragment()
     )
 
     override fun getItem(potition: Int): Fragment {
@@ -27,7 +29,8 @@ class PagerAdapterFavorites(private val context: Context, fragmentManager: Fragm
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
             0 -> context.resources.getString(R.string.var_item_prev)
-            else -> return context.resources.getString(R.string.var_item_next)
+            1 -> return context.resources.getString(R.string.var_item_next)
+            else -> return context.resources.getString(R.string.var_item_team)
         }
     }
 }

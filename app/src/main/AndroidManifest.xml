@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.activity.DetailEventActivity"></activity>
+        <activity android:name=".view.activity.DetailTeamActivity"></activity>
         <activity android:name=".view.activity.LeagueActivity"></activity>
         <activity android:name=".view.activity.MainActivity">
             <intent-filter>

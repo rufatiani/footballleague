@@ -9,6 +9,7 @@ import com.example.footballleague.model.League
 import com.example.footballleague.view.fragment.DetailLeagueFragment
 import com.example.footballleague.view.fragment.NextEventsFragment
 import com.example.footballleague.view.fragment.PrevEventsFragment
+import com.example.footballleague.view.fragment.TeamsFragment
 
 class PagerBottomNavigationAdapter(
     val league: League,
@@ -20,7 +21,8 @@ class PagerBottomNavigationAdapter(
     private val fragments = listOf(
         DetailLeagueFragment(league),
         PrevEventsFragment(league.idLeague),
-        NextEventsFragment(league.idLeague)
+        NextEventsFragment(league.idLeague),
+        TeamsFragment(league.idLeague)
     )
 
     override fun getItem(potition: Int): Fragment {
@@ -35,7 +37,8 @@ class PagerBottomNavigationAdapter(
         return when (position) {
             0 -> context.resources.getString(R.string.var_item_detail)
             1 -> context.resources.getString(R.string.var_item_prev)
-            else -> context.resources.getString(R.string.var_item_next)
+            2 -> context.resources.getString(R.string.var_item_next)
+            else -> context.resources.getString(R.string.var_item_team)
         }
     }
 }

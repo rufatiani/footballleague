@@ -77,8 +77,12 @@ class MainActivity : AppCompatActivity() {
                     vpMain.currentItem = 1
                     return@OnNavigationItemSelectedListener true
                 }
-                R.id.navigation_favorites -> {
+                R.id.navigation_teams -> {
                     vpMain.currentItem = 2
+                    return@OnNavigationItemSelectedListener true
+                }
+                R.id.navigation_favorites -> {
+                    vpMain.currentItem = 3
                     return@OnNavigationItemSelectedListener true
                 }
             }

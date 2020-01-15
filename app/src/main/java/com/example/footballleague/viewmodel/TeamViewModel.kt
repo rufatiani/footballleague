@@ -20,6 +20,9 @@ class TeamViewModel (private val teamRepository: TeamRepository)
     val teams = MutableLiveData<List<Team>>()
     val teamsSearch : MutableLiveData<List<Team>>?  = MutableLiveData<List<Team>>()
     val teamDetail = MutableLiveData<List<Team>>()
+    val teamsFav : MutableLiveData<List<Team>>?  = MutableLiveData<List<Team>>()
+    val idSave = MutableLiveData<Long>()
+    val idDelete = MutableLiveData<Int>()
 
     fun loadTeams(idleague : String){
         loading.value = true
@@ -52,6 +55,38 @@ class TeamViewModel (private val teamRepository: TeamRepository)
             loading.value = false
             when (result) {
                 is Result.Success -> teamDetail.value = result.data?.teams
+                is Result.Error -> error.value = result.exception.message
+            }
+        }
+    }
+
+    fun saveFavTeam(team: Team) {
+        loading.value = true
+        val result = teamRepository.saveFavoriteTeam(team)
+        loading.value = false
+        when (result) {
+            is Result.Success -> idSave.value = result.data
+            is Result.Error -> error.value = result.exception.message
+        }
+    }
+
+    fun deleteFavTeam(idTeam: String) {
+        loading.value = true
+        val result = teamRepository.deleteFavoriteTeam(idTeam)
+        loading.value = false
+        when (result) {
+            is Result.Success -> idDelete.value = result.data
+            is Result.Error -> error.value = result.exception.message
+        }
+    }
+
+    fun loadFavTeams() {
+        loading.value = true
+        launch {
+            val result = withContext(Dispatchers.IO) { teamRepository.getFavoriteTeams() }
+            loading.value = false
+            when (result) {
+                is Result.Success -> teamsFav?.value = result.data
                 is Result.Error -> error.value = result.exception.message
             }
         }

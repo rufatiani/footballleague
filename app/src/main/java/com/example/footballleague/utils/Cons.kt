@@ -4,6 +4,7 @@ class Const {
     companion object {
         const val PARCEL_LEAGUE = "league"
         const val PARCEL_EVENT = "event"
+        const val PARCEL_TEAM = "team"
         const val PARCEL_ACTION = "action"
         const val PARCEL_CLICK = "click"
         const val PARCEL_DELETE = "delete"

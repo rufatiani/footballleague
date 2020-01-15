@@ -74,6 +74,10 @@ class LeagueActivity : AppCompatActivity() {
                     vpLeague.currentItem = 2
                     return@OnNavigationItemSelectedListener true
                 }
+                R.id.navigation_team -> {
+                    vpLeague.currentItem = 3
+                    return@OnNavigationItemSelectedListener true
+                }
             }
             false
         }

@@ -47,23 +47,6 @@ class EventFavoriteAdapter(private val listener: (HashMap<String, Any>) -> Unit)
         if (position != RecyclerView.NO_POSITION) {
             holder.bindItem(events[position])
         }
-
-//        val builder = AlertDialog.Builder(holder.itemView.context)
-//        builder.setTitle(holder.itemView.resources.getString(R.string.var_msg_title))
-//        builder.setMessage(holder.itemView.resources.getString(R.string.var_msg))
-//
-//        builder.setPositiveButton(android.R.string.yes) { dialog, which ->
-//            eventViewModel.deleteFavEvent(events[position].idEvent)
-//            updateData(events.drop(position))
-//        }
-//
-//        builder.setNegativeButton(android.R.string.no) { dialog, which ->
-//            builder.setCancelable(true)
-//        }
-//
-//        holder.itemView.ivDeleteEventFav.setOnClickListener { view ->
-//            builder.show()
-//        }
     }
 
     fun updateData(newList: List<Event>) {

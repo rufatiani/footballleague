@@ -11,6 +11,11 @@
         android:title="@string/title_event" />
 
     <item
+        android:id="@+id/navigation_teams"
+        android:icon="@drawable/ic_people_white_24dp"
+        android:title="@string/var_item_team" />
+
+    <item
         android:id="@+id/navigation_favorites"
         android:icon="@drawable/ic_favorite_white_24dp"
         android:title="@string/title_favorite" />
