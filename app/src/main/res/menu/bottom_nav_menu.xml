@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/navigation_classemnet"
-        android:icon="@drawable/ic_device_hub_white_24dp"
+        android:icon="@drawable/ic_donut_large_white_24dp"
         android:title="@string/var_item_classement" />
 
     <item

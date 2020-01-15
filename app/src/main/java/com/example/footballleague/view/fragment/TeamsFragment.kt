@@ -3,7 +3,6 @@ package com.example.footballleague.view.fragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -16,7 +15,6 @@ import com.example.footballleague.model.Team
 import com.example.footballleague.utils.Const
 import com.example.footballleague.view.activity.DetailTeamActivity
 import com.example.footballleague.viewmodel.TeamViewModel
-import kotlinx.android.synthetic.main.fragment_events.*
 import kotlinx.android.synthetic.main.fragment_teams.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -54,7 +52,7 @@ class TeamsFragment(private val idLeague: String) : Fragment() {
 
     private fun initData() {
         teamViewModel.teams.observe(this, Observer { teams ->
-            if(teams != null) {
+            if (teams != null) {
                 this.teams = teams
                 setLayout()
             }

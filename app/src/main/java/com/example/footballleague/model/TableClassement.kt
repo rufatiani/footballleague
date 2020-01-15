@@ -7,5 +7,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class TableClassement(
     @SerializedName("table")
-    val classements : List<Classement>
-): Parcelable
+    val classements: List<Classement>
+) : Parcelable

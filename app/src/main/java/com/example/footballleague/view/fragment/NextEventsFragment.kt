@@ -52,7 +52,7 @@ class NextEventsFragment(private val idLeague: String) : Fragment() {
 
     private fun initData() {
         eventViewModel.nextEvents?.observe(this, Observer { events ->
-            if(events != null) {
+            if (events != null) {
                 this.events = events
                 setLayout()
             }

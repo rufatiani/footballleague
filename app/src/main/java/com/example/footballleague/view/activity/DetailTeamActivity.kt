@@ -12,11 +12,10 @@ import com.example.footballleague.model.Team
 import com.example.footballleague.utils.Const
 import com.example.footballleague.viewmodel.TeamViewModel
 import kotlinx.android.synthetic.main.activity_detail_team.*
-import kotlinx.android.synthetic.main.fragment_detail_league.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
-class DetailTeamActivity : AppCompatActivity(){
+class DetailTeamActivity : AppCompatActivity() {
     private lateinit var team: Team
     private val teamViewModel: TeamViewModel by viewModel()
 
@@ -42,15 +41,15 @@ class DetailTeamActivity : AppCompatActivity(){
         tvDetailCountryTeam.text = team.country
         tvDetailDescriptionTeam.text = team.description
 
-        if(team.youtube.isEmpty()) {
+        if (team.youtube.isEmpty()) {
             tvDetailYoutubeTeam.text = "-"
-        }else{
+        } else {
             tvDetailYoutubeTeam.text = team.youtube
         }
 
         if (team.website.isEmpty()) {
             tvDetailWebsiteTeam.text = "-"
-        }else{
+        } else {
             tvDetailWebsiteTeam.text = team.website
         }
 

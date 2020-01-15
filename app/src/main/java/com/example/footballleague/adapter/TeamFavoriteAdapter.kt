@@ -10,14 +10,12 @@ import com.bumptech.glide.Glide
 import com.example.footballleague.R
 import com.example.footballleague.model.Team
 import com.example.footballleague.utils.Const
-import kotlinx.android.synthetic.main.item_event_favorite.view.*
-import kotlinx.android.synthetic.main.item_league.view.*
 import kotlinx.android.synthetic.main.item_league.view.ivItemLogo
 import kotlinx.android.synthetic.main.item_league.view.tvItemName
 import kotlinx.android.synthetic.main.item_team_favorite.view.*
 import kotlin.properties.Delegates
 
-class TeamFavoriteAdapter (private val listener: (HashMap<String, Any>) -> Unit) :
+class TeamFavoriteAdapter(private val listener: (HashMap<String, Any>) -> Unit) :
     RecyclerView.Adapter<TeamFavoriteAdapter.ViewHolder>() {
 
     private var teams: List<Team> by Delegates.observable(emptyList()) { _, _, _ ->

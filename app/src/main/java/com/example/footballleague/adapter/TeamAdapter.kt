@@ -12,7 +12,7 @@ import com.example.footballleague.model.Team
 import kotlinx.android.synthetic.main.item_league.view.*
 import kotlin.properties.Delegates
 
-class TeamAdapter (private val listener: (Team) -> Unit) :
+class TeamAdapter(private val listener: (Team) -> Unit) :
     RecyclerView.Adapter<TeamAdapter.ViewHolder>() {
 
     private var teams: List<Team> by Delegates.observable(emptyList()) { _, _, _ ->

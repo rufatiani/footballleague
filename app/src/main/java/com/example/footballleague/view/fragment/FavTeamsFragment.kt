@@ -19,7 +19,7 @@ import com.example.footballleague.viewmodel.TeamViewModel
 import kotlinx.android.synthetic.main.fragment_teams.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class FavTeamsFragment : Fragment(){
+class FavTeamsFragment : Fragment() {
     private lateinit var teamFavoriteAdapter: TeamFavoriteAdapter
     private val teamViewModel: TeamViewModel by viewModel()
 

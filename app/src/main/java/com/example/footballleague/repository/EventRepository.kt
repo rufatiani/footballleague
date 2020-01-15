@@ -3,12 +3,12 @@ package com.example.footballleague.repository
 import android.annotation.SuppressLint
 import android.content.Context
 import com.example.footballleague.api.ApiInterface
-import com.example.footballleague.utils.database
 import com.example.footballleague.model.Event
 import com.example.footballleague.model.Events
 import com.example.footballleague.model.EventsJson
 import com.example.footballleague.utils.Const
 import com.example.footballleague.utils.Result
+import com.example.footballleague.utils.database
 import org.jetbrains.anko.db.*
 import java.text.SimpleDateFormat
 import java.util.*

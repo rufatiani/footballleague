@@ -36,7 +36,12 @@ val appModules = module {
     factory<TeamRepository> { TeamRepositoryImpl(apiInterface = get(), context = get()) }
     viewModel { TeamViewModel(teamRepository = get()) }
 
-    factory<ClassementRepository> { ClassementRepositoryImpl(apiInterface = get(), context = get()) }
+    factory<ClassementRepository> {
+        ClassementRepositoryImpl(
+            apiInterface = get(),
+            context = get()
+        )
+    }
     viewModel { ClassementViewModel(classementRepository = get()) }
 }
 

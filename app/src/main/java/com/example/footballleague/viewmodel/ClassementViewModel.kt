@@ -8,8 +8,8 @@ import com.example.footballleague.utils.Result
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class ClassementViewModel (private val classementRepository: ClassementRepository)
-    : ViewModel(), CoroutineScope {
+class ClassementViewModel(private val classementRepository: ClassementRepository) : ViewModel(),
+    CoroutineScope {
 
     private val job = Job()
     override val coroutineContext: CoroutineContext = Dispatchers.Main + job
@@ -18,10 +18,11 @@ class ClassementViewModel (private val classementRepository: ClassementRepositor
     val error = MutableLiveData<String>()
     val classement = MutableLiveData<List<Classement>>()
 
-    fun loadClassement(idleague : String){
+    fun loadClassement(idleague: String) {
         loading.value = true
         launch {
-            val result = withContext(Dispatchers.IO) { classementRepository.getTableClassement(idleague) }
+            val result =
+                withContext(Dispatchers.IO) { classementRepository.getTableClassement(idleague) }
             loading.value = false
             when (result) {
                 is Result.Success -> classement.value = result.data?.classements

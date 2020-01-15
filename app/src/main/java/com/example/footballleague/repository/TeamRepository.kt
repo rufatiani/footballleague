@@ -2,19 +2,19 @@ package com.example.footballleague.repository
 
 import android.content.Context
 import com.example.footballleague.api.ApiInterface
-import com.example.footballleague.utils.database
 import com.example.footballleague.model.Team
 import com.example.footballleague.model.Teams
 import com.example.footballleague.utils.Const
 import com.example.footballleague.utils.Result
+import com.example.footballleague.utils.database
 import org.jetbrains.anko.db.*
 
 interface TeamRepository {
-    suspend fun getTeams(idLeague : String) : Result<Teams>
+    suspend fun getTeams(idLeague: String): Result<Teams>
 
-    suspend fun getTeamsSearch(query : String) : Result<Teams>
+    suspend fun getTeamsSearch(query: String): Result<Teams>
 
-    suspend fun getDetailTeam(idTeam: String) : Result<Teams>
+    suspend fun getDetailTeam(idTeam: String): Result<Teams>
 
     fun saveFavoriteTeam(team: Team): Result<Long>
 
@@ -23,8 +23,8 @@ interface TeamRepository {
     suspend fun getFavoriteTeams(): Result<List<Team>>
 }
 
-class TeamRepositoryImpl(private val apiInterface: ApiInterface, val context: Context)
-    : TeamRepository{
+class TeamRepositoryImpl(private val apiInterface: ApiInterface, val context: Context) :
+    TeamRepository {
     override suspend fun getFavoriteTeams(): Result<List<Team>> {
         return try {
             context.database.use {

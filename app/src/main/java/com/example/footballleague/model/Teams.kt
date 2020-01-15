@@ -7,5 +7,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Teams(
     @SerializedName("teams")
-    val teams : List<Team>
+    val teams: List<Team>
 ) : Parcelable

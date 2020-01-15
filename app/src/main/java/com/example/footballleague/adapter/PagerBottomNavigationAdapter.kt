@@ -35,7 +35,7 @@ class PagerBottomNavigationAdapter(
     override fun getPageTitle(position: Int): CharSequence? {
         return when (position) {
             0 -> context.resources.getString(R.string.var_item_detail)
-            1 ->  context.resources.getString(R.string.var_item_classement)
+            1 -> context.resources.getString(R.string.var_item_classement)
             2 -> context.resources.getString(R.string.var_item_team)
             3 -> context.resources.getString(R.string.var_item_prev)
             else -> context.resources.getString(R.string.var_item_next)

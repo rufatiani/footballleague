@@ -3,14 +3,12 @@ package com.example.footballleague.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.footballleague.model.Team
-import com.example.footballleague.model.Teams
 import com.example.footballleague.repository.TeamRepository
 import com.example.footballleague.utils.Result
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
-class TeamViewModel (private val teamRepository: TeamRepository)
-    : ViewModel(), CoroutineScope{
+class TeamViewModel(private val teamRepository: TeamRepository) : ViewModel(), CoroutineScope {
 
     private val job = Job()
     override val coroutineContext: CoroutineContext = Dispatchers.Main + job
@@ -18,13 +16,13 @@ class TeamViewModel (private val teamRepository: TeamRepository)
     val loading = MutableLiveData<Boolean>()
     val error = MutableLiveData<String>()
     val teams = MutableLiveData<List<Team>>()
-    val teamsSearch : MutableLiveData<List<Team>>?  = MutableLiveData<List<Team>>()
+    val teamsSearch: MutableLiveData<List<Team>>? = MutableLiveData<List<Team>>()
     val teamDetail = MutableLiveData<List<Team>>()
-    val teamsFav : MutableLiveData<List<Team>>?  = MutableLiveData<List<Team>>()
+    val teamsFav: MutableLiveData<List<Team>>? = MutableLiveData<List<Team>>()
     val idSave = MutableLiveData<Long>()
     val idDelete = MutableLiveData<Int>()
 
-    fun loadTeams(idleague : String){
+    fun loadTeams(idleague: String) {
         loading.value = true
         launch {
             val result = withContext(Dispatchers.IO) { teamRepository.getTeams(idleague) }
@@ -36,7 +34,7 @@ class TeamViewModel (private val teamRepository: TeamRepository)
         }
     }
 
-    fun loadTeamsSearch(query : String){
+    fun loadTeamsSearch(query: String) {
         loading.value = true
         launch {
             val result = withContext(Dispatchers.IO) { teamRepository.getTeamsSearch(query) }
@@ -48,7 +46,7 @@ class TeamViewModel (private val teamRepository: TeamRepository)
         }
     }
 
-    fun loadTeamsDetail(idleague: String){
+    fun loadTeamsDetail(idleague: String) {
         loading.value = true
         launch {
             val result = withContext(Dispatchers.IO) { teamRepository.getDetailTeam(idleague) }

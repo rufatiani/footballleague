@@ -1,6 +1,5 @@
 package com.example.footballleague.view.fragment
 
-import android.content.AbstractThreadedSyncAdapter
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,7 +19,7 @@ import com.example.footballleague.viewmodel.TeamViewModel
 import kotlinx.android.synthetic.main.fragment_teams.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class TeamsSearchFragment : Fragment(){
+class TeamsSearchFragment : Fragment() {
     private var teams: List<Team> = ArrayList()
     private lateinit var teamAdapter: TeamAdapter
     private val teamViewModel: TeamViewModel by viewModel()
