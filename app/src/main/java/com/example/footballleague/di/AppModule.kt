@@ -2,12 +2,11 @@ package com.example.footballleague.di
 
 import com.example.footballleague.api.ApiConfiguration
 import com.example.footballleague.api.ApiInterface
-import com.example.footballleague.repository.EventRepository
-import com.example.footballleague.repository.EventRepositoryImpl
-import com.example.footballleague.repository.LeagueRepository
-import com.example.footballleague.repository.LeagueRepositoryImpl
+import com.example.footballleague.repository.*
+import com.example.footballleague.viewmodel.ClassementViewModel
 import com.example.footballleague.viewmodel.EventViewModel
 import com.example.footballleague.viewmodel.LeagueViewModel
+import com.example.footballleague.viewmodel.TeamViewModel
 import com.google.gson.GsonBuilder
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -33,6 +32,12 @@ val appModules = module {
 
     factory<EventRepository> { EventRepositoryImpl(apiInterface = get(), context = get()) }
     viewModel { EventViewModel(eventRepository = get()) }
+
+    factory<TeamRepository> { TeamRepositoryImpl(apiInterface = get(), context = get()) }
+    viewModel { TeamViewModel(teamRepository = get()) }
+
+    factory<ClassementRepository> { ClassementRepositoryImpl(apiInterface = get(), context = get()) }
+    viewModel { ClassementViewModel(classementRepository = get()) }
 }
 
 fun createHttpClient(): OkHttpClient {

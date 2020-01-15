@@ -6,7 +6,7 @@ import com.example.footballleague.utils.Const
 import org.jetbrains.anko.db.*
 
 class DatabaseOpenHelper(context: Context) :
-    ManagedSQLiteOpenHelper(context, "FavoriteEvents.db", null, 7) {
+    ManagedSQLiteOpenHelper(context, "FavoriteEvents.db", null, 8) {
     companion object {
         private var instance: DatabaseOpenHelper? = null
 
@@ -37,10 +37,24 @@ class DatabaseOpenHelper(context: Context) :
             Const.COL_AWAY_FORMATION to TEXT,
             Const.COL_IMAGE_URL to TEXT
         )
+
+        db.createTable(
+            Const.TB_FAVORITE_TEAMS, true,
+            Const.COL_ID_TEAM to TEXT + PRIMARY_KEY,
+            Const.COL_NAME_TEAM to TEXT,
+            Const.COL_ID_LEAGUE to TEXT,
+            Const.COL_NAME_LEAGUE to TEXT,
+            Const.COL_WEBSITE_URL to TEXT,
+            Const.COL_YOUTUBE_URL to TEXT,
+            Const.COL_COUNTRY to TEXT,
+            Const.COL_TEAM_BADGE to TEXT,
+            Const.COL_DESCRIPTION to TEXT
+        )
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.dropTable(Const.TB_FAVORITE_EVENTS, true)
+        db.dropTable(Const.TB_FAVORITE_TEAMS, true)
     }
 }
 
